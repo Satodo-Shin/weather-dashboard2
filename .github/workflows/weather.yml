@@ -32,5 +32,10 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.github.io"
+          
+          # リモートの最新情報を取得して同期
+          git fetch origin main
+          git rebase origin/main || true
+          
           git add weather.json
-          git diff --staged --quiet || (git commit -m "Auto-update weather data: $(date +'%Y-%m-%d %H:%M')" && git pull --rebase origin main && git push origin main)
+          git diff --staged --quiet || (git commit -m "Auto-update weather data: $(date +'%Y-%m-%d %H:%M')" && git push origin HEAD:main)
