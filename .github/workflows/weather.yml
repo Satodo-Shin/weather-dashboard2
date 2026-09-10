@@ -28,12 +28,10 @@ jobs:
         run: |
           python scrape_weather.py
 
-      - name: Commit and push changes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.github.io"
-          
-          git add weather.json
-          
-          # 変更がない場合はそのまま終了、ある場合はコミットして強制プッシュ
-          git diff --staged --quiet || (git commit -m "Auto-update weather data: $(date +'%Y-%m-%d %H:%M')" && git push --force origin HEAD:main)
+      - name: Commit and push weather.json
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github-actions
+          message: "Auto-update weather data"
+          add: "weather.json"
+          push: true
