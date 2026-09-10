@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>天気分析</title>
+    <!-- Tailwind CSSを読み込み -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-slate-800 min-h-screen p-6">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-2xl font-bold mb-6 text-slate-900 flex items-center gap-2">
+            <span>🌤️</span> 天気予報 4社比較ダッシュボード
+        </h1>
+        
+        <!-- 4社を並べるグリッドカード -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <!-- ウェザーニューズ -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3 border-b border-slate-200 pb-2">
+                    <div class="flex items-center gap-2">
+                        <!-- ウェザーニューズ風バッジ -->
+                        <span class="bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm">WN</span>
+                        <h2 class="font-bold text-slate-800 text-sm">ウェザーニューズ</h2>
+                    </div>
+                    <span class="text-[10px] text-slate-400">予報A</span>
+                </div>
+                <div class="flex justify-between text-sm text-slate-700 font-medium">
+                    <div class="text-center"><span class="block text-[10px] text-slate-400">12:00</span>☀️ 24℃</div>
+                    <div class="text-center"><span class="block text-[10px] text-slate-400">15:00</span>☀️ 25℃</div>
+                    <div class="text-center"><span class="block text-[10px] text-slate-400">18:00</span>⛅ 22℃</div>
+                </div>
+            </div>
+
+            <!-- 日本気象協会 (tenki.jp) -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3 border-b border-slate-200 pb-2">
+                    <div class="flex items-center gap-2">
+                        <!-- tenki.jp風バッジ -->
+                        <span class="bg-sky-500 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm">tenki.jp</span>
+                        <h2 class="font-bold text-slate-800 text-sm">日本気象協会</h2>
+                    </div>
+                    <span class="text-[10px] text-slate-400">予報B</span>
+                </div>
+                <div class="flex justify-between text-sm text-slate-700 font-medium">
+                    <div class="text-center"><span class="block text-[10px] text-slate-400">12:00</span>☀️ 25℃</div>
+                    <div class="text-center"><span class="block text-[10px] text-slate-400">15:00</span>☀️ 24℃</div>
+                    <div class="text-center"><span class="block text-[10px] text-slate-400">18:00</span>⛅ 22℃</div>
+                </div>
+            </div>
+
+            <!-- 気象庁 -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3 border-b border-slate-200 pb-2">
+                    <div class="flex items-center gap-2">
+                        <!-- 気象庁風バッジ -->
+                        <span class="bg-indigo-900 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm">JMA</span>
+                        <h2 class="font-bold text-slate-800 text-sm">気象庁</h2>
+                    </div>
+                    <span class="text-[10px] text-slate-400">予報C</span>
+                </div>
+                <div class="flex justify-between text-sm text-slate-700 font-medium">
+                    <div class="text-center"><span class="block text-[10px] text-slate-400">12:00</span>☀️ 24℃</div>
+                    <div class="text-center"><span class="block text-[10px] text-slate-400">15:00</span>⛅ 23℃</div>
+                    <div class="text-center"><span class="block text-[10px] text-slate-400">18:00</span>☁️ 21℃</div>
+                </div>
+            </div>
+
+            <!-- Yahoo!天気 -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3 border-b border-slate-200 pb-2">
+                    <div class="flex items-center gap-2">
+                        <!-- Yahoo!風バッジ -->
+                        <span class="bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm">Y!</span>
+                        <h2 class="font-bold text-slate-800 text-sm">Yahoo!天気</h2>
+                    </div>
+                    <span class="text-[10px] text-slate-400">予報D</span>
+                </div>
+                <div class="flex justify-between text-sm text-slate-700 font-medium">
+                    <div class="text-center"><span class="block text-[10px] text-slate-400">12:00</span>☀️ 24℃</div>
+                    <div class="text-center"><span class="block text-[10px] text-slate-400">15:00</span>⛅ 23℃</div>
+                    <div class="text-center"><span class="block text-[10px] text-slate-400">18:00</span>☁️ 21℃</div>
+                </div>
+            </div>
+
+        </div>
+        <p class="text-xs text-slate-400 mt-6 text-center">※個人利用・各社カラーのロゴ風バッジ付き</p>
+    </div>
+</body>
+</html>
