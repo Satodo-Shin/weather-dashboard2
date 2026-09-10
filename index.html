@@ -2,12 +2,12 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>天気予報 複数都市・各社比較ダッシュボード</title>
+    <title>Weather Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen p-3 sm:p-4">
     <div class="max-w-7xl mx-auto">
-        <!-- 右上に控えめに集計時刻を表示 -->
+        <!-- 右上の集計時刻 -->
         <div class="flex justify-end mb-3">
             <div class="bg-slate-800 text-slate-300 text-[10px] font-semibold px-2.5 py-1 rounded-full border border-slate-700">
                 <span>🕒 集計時刻:</span>
@@ -15,18 +15,15 @@
             </div>
         </div>
         
-        <!-- 都市別カードを並べるグリッド -->
-        <div id="city-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-            <!-- JavaScriptで動的に都市ごとのカードが挿入されます -->
-        </div>
+        <!-- 都市別グリッド -->
+        <div id="city-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"></div>
     </div>
 
     <script>
         fetch('weather.json?t=' + new Date().getTime())
-            .then(response => response.json())
+            .then(res => res.json())
             .then(data => {
                 document.getElementById('update-time').textContent = data.updated_at || '不明';
-
                 const cityGrid = document.getElementById('city-grid');
                 cityGrid.innerHTML = '';
 
@@ -34,12 +31,6 @@
                     let stationsHtml = '';
 
                     city.stations.forEach(station => {
-                        let badgeBg = 'bg-slate-600';
-                        if (station.code === 'WN') badgeBg = 'bg-blue-600';
-                        else if (station.code === 'tenki.jp') badgeBg = 'bg-sky-500';
-                        else if (station.code === 'JMA') badgeBg = 'bg-indigo-700';
-                        else if (station.code === 'Y!') badgeBg = 'bg-red-600';
-
                         let timesHtml = '';
                         station.forecasts.forEach(f => {
                             timesHtml += `
@@ -54,7 +45,7 @@
                         stationsHtml += `
                             <div class="mb-2 last:mb-0">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="${badgeBg} text-white text-[9px] font-bold px-1.5 py-0.5 rounded">${station.name}</span>
+                                    <span class="text-slate-400 text-[9px] font-bold px-1.5 py-0.5">${station.name}</span>
                                 </div>
                                 <div class="grid grid-cols-4 gap-1">
                                     ${timesHtml}
@@ -76,8 +67,8 @@
                     cityGrid.appendChild(cityCard);
                 });
             })
-            .catch(error => {
-                console.error('データ取得エラー:', error);
+            .catch(err => {
+                console.error(err);
                 document.getElementById('update-time').textContent = 'データ取得失敗';
             });
     </script>
